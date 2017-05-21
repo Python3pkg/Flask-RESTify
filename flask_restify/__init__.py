@@ -178,7 +178,7 @@ class Api(object):
     def _register_view(self, app, resource, *urls, **kwargs):
         endpoint = kwargs.pop('endpoint', None) or resource.__name__.lower()
 
-        if endpoint in app.view_functions.keys():
+        if endpoint in list(app.view_functions.keys()):
             previous_view_class = app.view_functions[endpoint].__dict__['view_class']
 
             # if you override the endpoint with a different class, avoid the collision by raising an exception
